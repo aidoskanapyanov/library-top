@@ -28,6 +28,13 @@ body {
     grid-auto-rows: 1fr;
 }
 
+@media only screen and (max-width: 900px) {
+    .books {
+        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 .book {
     padding: 10px 20px;
     background-color: bisque;
@@ -66,6 +73,13 @@ body {
     padding: 20px 20px 20px 50px;
     border: 1px solid #888;
     width: 400px;
+}
+
+@media only screen and (max-width: 900px) {
+    .modal-content {
+        width: 250px;
+        padding: 20px;
+    }
 }
 
 /* The Close Button */
