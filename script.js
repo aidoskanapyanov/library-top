@@ -38,9 +38,15 @@ function displayBooks() {
 
     let read = document.createElement("p");
     read.innerText = book.read ? "Read" : "Not Read";
-    const read_class = book.read ? "read" : "not-read";
-    card.classList.add(read_class);
     card.appendChild(read);
+
+    let readToggleBtn = document.createElement("button");
+    const read_class = book.read ? "read" : "not-read";
+    readToggleBtn.classList.add("btn");
+    readToggleBtn.classList.add("btn-read-toggle");
+    readToggleBtn.classList.add(read_class);
+    readToggleBtn.innerText = book.read ? "Read" : "Not read";
+    card.appendChild(readToggleBtn);
 
     let removeBtn = document.createElement("button");
     removeBtn.classList.add("btn");
@@ -83,6 +89,16 @@ window.onclick = function (event) {
     removeBook(index);
     books.innerHTML = "";
     displayBooks();
+  } else if (event.target.classList.contains("btn-read-toggle")) {
+    if (event.target.classList.contains("read")) {
+      event.target.classList.remove("read");
+      event.target.classList.add("not-read");
+      event.target.innerText = "Not read";
+    } else {
+      event.target.classList.remove("not-read");
+      event.target.classList.add("read");
+      event.target.innerText = "Read";
+    }
   }
 };
 
