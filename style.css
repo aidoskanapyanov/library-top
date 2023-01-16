@@ -110,6 +110,10 @@ input {
     margin-bottom: 10px;
 }
 
+.btn-read-toggle {
+    display: block;
+}
+
 .read {
     background-color: #0d99ff;
 }
