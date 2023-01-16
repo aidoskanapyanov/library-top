@@ -16,8 +16,9 @@ body {
     margin-bottom: 20px;
 }
 
-.btn:active {
-    filter: brightness(80%);
+.btn:active,
+.btn:hover {
+    filter: brightness(90%);
 }
 
 .books {
