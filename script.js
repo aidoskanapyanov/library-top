@@ -19,9 +19,10 @@ function addBookToLibrary(book) {
 let books = document.querySelector(".books");
 
 function displayBooks() {
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, index) => {
     let card = document.createElement("div");
     card.classList.add("book");
+    card.setAttribute("data", index);
 
     let title = document.createElement("h4");
     title.innerText = book.title;
@@ -37,7 +38,15 @@ function displayBooks() {
 
     let read = document.createElement("p");
     read.innerText = book.read ? "Read" : "Not Read";
+    const read_class = book.read ? "read" : "not-read";
+    card.classList.add(read_class);
     card.appendChild(read);
+
+    let removeBtn = document.createElement("button");
+    removeBtn.classList.add("btn");
+    removeBtn.classList.add("btn-remove");
+    removeBtn.innerText = "Remove";
+    card.appendChild(removeBtn);
 
     books.appendChild(card);
   });
@@ -61,9 +70,19 @@ submitBtn.onclick = function () {
   modal.style.display = "none";
 };
 
+function removeBook(index) {
+  myLibrary.splice(index, 1);
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+}
+
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
+  } else if (event.target.classList.contains("btn-remove")) {
+    const index = event.target.parentElement.getAttribute("data");
+    removeBook(index);
+    books.innerHTML = "";
+    displayBooks();
   }
 };
 
