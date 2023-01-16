@@ -1,8 +1,8 @@
-let myLibrary = [
-  new Book((title = "Lord of the rings"), (author = "Jon Doe"), (pages = 120), (read = true)),
-  new Book((title = "Tokyo drift"), (author = "Bruce Lee"), (pages = 320), (read = false)),
-  new Book((title = "The Alchemist"), (author = "Joey Tribbiani"), (pages = 231), (read = true)),
-];
+let myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+
+if (!myLibrary) {
+  myLibrary = [];
+}
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -12,7 +12,8 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary(book) {
-  return myLibrary.push(book);
+  myLibrary.push(book);
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
 
 let books = document.querySelector(".books");
