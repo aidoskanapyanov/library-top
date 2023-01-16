@@ -11,8 +11,27 @@
   <body>
     <div class="main">
       <h1>Library</h1>
-      <button class="btn btn-primary">Add book</button>
+      <button id="bookBtn" class="btn btn-primary">Add book</button>
       <div class="books"></div>
+
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h4>Add book to the library.</h4>
+
+          <form id="form">
+            <label for="title">Book title:</label><br />
+            <input type="text" id="title" name="title" placeholder="Harry Potter" /><br />
+            <label for="author">Author:</label><br />
+            <input type="text" id="author" name="author" placeholder="Jane Austien" /><br />
+            <label for="pages">Number of pages:</label><br />
+            <input type="number" id="pages" name="pages" min="1" max="10000" /><br />
+            <input type="checkbox" id="read" name="read" value="true" />
+            <label for="read">read?</label><br />
+            <input id="submitBtn" type="submit" value="Submit" />
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>
